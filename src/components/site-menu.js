@@ -1,4 +1,4 @@
-//Создание шаблона меню сайта
+// Создание шаблона меню сайта
 const createSiteMenuTemplate = () => {
   return (
     `<section class="control__btn-wrap">
@@ -32,4 +32,4 @@ const createSiteMenuTemplate = () => {
   );
 };
 
-export { createSiteMenuTemplate };
+export {createSiteMenuTemplate};

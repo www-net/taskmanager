@@ -9,4 +9,4 @@ const createSortingTemplate = () => {
   );
 };
 
-export { createSortingTemplate };
+export {createSortingTemplate};
