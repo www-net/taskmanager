@@ -1,4 +1,4 @@
-//Создание шаблона для фильтров
+// Создание шаблона для фильтров
 const createFiltersTemplate = () => {
   return (
     `<section class="main__filter filter container">
@@ -60,7 +60,7 @@ const createFiltersTemplate = () => {
             >Archive <span class="filter__archive-count">115</span></label
             >
         </section>`
-  )
+  );
 };
 
-export { createFiltersTemplate };
+export {createFiltersTemplate};

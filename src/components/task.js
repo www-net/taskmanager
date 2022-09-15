@@ -1,4 +1,4 @@
-//Создание шаблона карточки задачи
+// Создание шаблона карточки задачи
 const createTaskTemplate = () => {
   return (
     `<article class="card card--black">
@@ -47,4 +47,4 @@ const createTaskTemplate = () => {
   );
 };
 
-export { createTaskTemplate };
+export {createTaskTemplate};

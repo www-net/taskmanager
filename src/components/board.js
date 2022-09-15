@@ -1,4 +1,4 @@
-//Создание шаблона доски задач
+// Создание шаблона доски задач
 const createBoardTemplate = () => {
   return (
     `<section class="board container">
@@ -7,4 +7,4 @@ const createBoardTemplate = () => {
   );
 };
 
-export { createBoardTemplate };
+export {createBoardTemplate};

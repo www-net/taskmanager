@@ -1,4 +1,4 @@
-//Создание шаблона редактора карточки задачи
+// Создание шаблона редактора карточки задачи
 const createTaskEditTemplate = () => {
   return (
     `<article class="card card--edit card--yellow card--repeat">
@@ -201,4 +201,4 @@ const createTaskEditTemplate = () => {
   );
 };
 
-export { createTaskEditTemplate };
+export {createTaskEditTemplate};

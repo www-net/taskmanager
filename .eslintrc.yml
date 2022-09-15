@@ -3,7 +3,8 @@ parserOptions:
   sourceType: 'module'
 
 env:
-  es2017: true
+  es6: true
   browser: true
+  commonjs: true
 
-extends: 'htmlacademy/vanilla'
+extends: 'htmlacademy/es6'
