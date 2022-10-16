@@ -1,9 +1,9 @@
-import {createFiltersTemplate} from './components/filters';
-import {createSiteMenuTemplate} from './components/site-menu';
 import {createBoardTemplate} from './components/board';
-import {createTaskTemplate} from './components/task';
-import {createTaskEditTemplate} from './components/task-edit';
+import {createFiltersTemplate} from './components/filters';
 import {createLoadMoreButtonTemplate} from './components/load-more-button';
+import {createTaskEditTemplate} from './components/task-edit';
+import {createTaskTemplate} from './components/task';
+import {createSiteMenuTemplate} from './components/site-menu';
 import {createSortingTemplate} from './components/sorting';
 import {generateFilters} from './mock/filter';
 import {generateTasks} from './mock/task';
@@ -36,9 +36,9 @@ render(taskListElement, createTaskEditTemplate(tasks[0]));
 
 let showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
 
-for (let i = 1; i < showingTasksCount; i++) {
-  render(taskListElement, createTaskTemplate(tasks[i]));
-}
+tasks.slice(1, showingTasksCount)
+  .forEach((task) => render(taskListElement,
+    createTaskTemplate(task)));
 
 render(boardElement, createLoadMoreButtonTemplate());
 
