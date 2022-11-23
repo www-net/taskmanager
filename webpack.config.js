@@ -11,5 +11,14 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, `public`), // Где искать сборку
     watchContentBase: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: ['babel-loader'],
+      }
+    ]
   }
 };

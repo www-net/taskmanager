@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "description": "",
+  "browserslist": [
+    "last 2 version",
+    "not dead",
+    "not ie <=11",
+    "not op_mini all",
+    "not < 0.25%"
+  ],
   "scripts": {
     "build": "webpack",
     "eslint": "eslint src/**/*.js",
@@ -10,6 +17,9 @@
     "test": "npm run eslint"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^8.2.5",
     "eslint": "6.1.0",
     "eslint-config-htmlacademy": "0.5.2",
     "webpack": "4.42.1",

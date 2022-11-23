@@ -2,7 +2,7 @@ const filterNames = [
   `all`, `overdue`, `today`, `favorites`, `repeating`, `archive`
 ];
 
-const generateFilters = () => {
+export const generateFilters = () => {
   return filterNames.map((it) => {
     return {
       name: it,
@@ -10,5 +10,3 @@ const generateFilters = () => {
     };
   });
 };
-
-export { generateFilters };
