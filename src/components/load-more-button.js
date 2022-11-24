@@ -1,4 +1,4 @@
-import { createElement } from "../utils";
+import {createElement} from "../utils";
 
 // Создание шаблона кнопки "Load more"
 const createLoadMoreButtonTemplate = () => {
@@ -7,19 +7,19 @@ const createLoadMoreButtonTemplate = () => {
   );
 };
 
-//Класс кнопки Load more
+// Класс кнопки Load more
 export default class LoadMoreButton {
-  //Конструктор класса
+  // Конструктор класса
   constructor() {
     this._element = null;
   }
 
-  //Возвращает шаблон кнопки
+  // Возвращает шаблон кнопки
   getTemplate() {
     return createLoadMoreButtonTemplate();
   }
 
-  //Возвращает DOM элемент
+  // Возвращает DOM элемент
   getElement() {
     if (!this._element) {
       this._element = createElement(this.getTemplate());
@@ -27,7 +27,7 @@ export default class LoadMoreButton {
     return this._element;
   }
 
-  //Очищает элемент DOM
+  // Очищает элемент DOM
   removeElement() {
     this._element = null;
   }
