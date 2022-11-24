@@ -14,7 +14,7 @@ const DefaultRepeatingDays = {
   'fr': false,
   'sa': false,
   'su': false,
-}
+};
 
 const getRandomArrayItem = (array) => {
   const randomIndex = getRandomIntegerNumber(0, array.length);
@@ -34,13 +34,13 @@ const getRandomDate = () => {
   targetDate.setDate(targetDate.getDate() + diffValue);
 
   return targetDate;
-}
+};
 
 const generateRepeatingDays = () => {
   return Object.assign({}, DefaultRepeatingDays, {
     'mo': Math.random() > 0.5,
   });
-}
+};
 
 export const generateTask = () => {
   const dueDate = Math.random() > 0.5 ? null : getRandomDate();

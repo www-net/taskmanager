@@ -1,12 +1,12 @@
-import { COLORS, DAYS, MONTH_NAMES } from '../const.js';
-import { formatTime, createElement } from '../utils.js';
+import {COLORS, DAYS, MONTH_NAMES} from '../const.js';
+import {formatTime, createElement} from '../utils.js';
 
-//Создает разметку для списка цветов
+// Создает разметку для списка цветов
 const createColorsMarkup = (colors, currentColor) => {
-    return colors
+  return colors
         .map((color, index) => {
-            return (
-                `<input
+          return (
+            `<input
         type="radio"
         id="color-${color}--${index}"
         class="card__color-input card__color-input--${color} visually-hidden"
@@ -18,18 +18,18 @@ const createColorsMarkup = (colors, currentColor) => {
         for="color-${color}--${index}"
         class="card__color card__color--${color}"
     >${color}</label>`
-            );
+          );
         })
         .join(`\n`);
 };
 
-//Создает разметку для списка дней недели
+// Создает разметку для списка дней недели
 const createRepeatingDaysMarkup = (days, repeatingDays) => {
-    return days
+  return days
         .map((day, index) => {
-            const isChecked = repeatingDays[day];
-            return (
-                `<input
+          const isChecked = repeatingDays[day];
+          return (
+            `<input
                     class="visually-hidden card__repeat-day-input"
                     type="checkbox"
                     id="repeat-${day}-${index}"
@@ -39,31 +39,31 @@ const createRepeatingDaysMarkup = (days, repeatingDays) => {
                 />
                 <label class="card__repeat-day" for="repeat-${day}-${index}"
                 >${day}</label>`
-                );
+          );
         })
         .join(`\n`);
-}
+};
 
 // Создание шаблона редактора карточки задачи
 const createTaskEditTemplate = (task) => {
-    const { description, dueDate, color, repeatingDays } = task;
+  const {description, dueDate, color, repeatingDays} = task;
 
-    const isExpired = dueDate instanceof Date && dueDate < Date.now();
-    const isDateShowing = !!dueDate;
+  const isExpired = dueDate instanceof Date && dueDate < Date.now();
+  const isDateShowing = !!dueDate;
 
-    const date = isDateShowing ? `${dueDate.getDate()} ${MONTH_NAMES[dueDate.getMonth()]}` : ``;
-    const time = isDateShowing ? formatTime(dueDate) : ``;
+  const date = isDateShowing ? `${dueDate.getDate()} ${MONTH_NAMES[dueDate.getMonth()]}` : ``;
+  const time = isDateShowing ? formatTime(dueDate) : ``;
 
-    const isRepeatingTask = Object.values(repeatingDays).some(Boolean);
+  const isRepeatingTask = Object.values(repeatingDays).some(Boolean);
 
-    const repeatClass = isRepeatingTask ? `card--repeat` : ``;
-    const deadlineClass = isExpired ? `card--deadline` : ``;
+  const repeatClass = isRepeatingTask ? `card--repeat` : ``;
+  const deadlineClass = isExpired ? `card--deadline` : ``;
 
-    const colorsMarkup = createColorsMarkup(COLORS, color);
-    const repeatingDaysMarkup = createRepeatingDaysMarkup(DAYS, repeatingDays);
+  const colorsMarkup = createColorsMarkup(COLORS, color);
+  const repeatingDaysMarkup = createRepeatingDaysMarkup(DAYS, repeatingDays);
 
-    return (
-        `<article class="card card--edit card--${color} ${repeatClass} ${deadlineClass}">
+  return (
+    `<article class="card card--edit card--${color} ${repeatClass} ${deadlineClass}">
           <form class="card__form" method="get">
             <div class="card__inner">
               <div class="card__color-bar">
@@ -90,7 +90,7 @@ const createTaskEditTemplate = (task) => {
                     </button>
 
                     ${isDateShowing ?
-                      `<fieldset class="card__date-deadline">
+      `<fieldset class="card__date-deadline">
                         <label class="card__input-deadline-wrap">
                           <input
                             class="card__date"
@@ -101,8 +101,8 @@ const createTaskEditTemplate = (task) => {
                           />
                         </label>
                       </fieldset>`
-                    : ``
-                    }
+      : ``
+    }
 
                     <button class="card__repeat-toggle" type="button">
                       repeat:<span class="card__repeat-status">yes</span>
@@ -131,23 +131,23 @@ const createTaskEditTemplate = (task) => {
             </div>
           </form>
         </article>`
-    );
+  );
 };
 
-//Класс для редактора карточки задачи
+// Класс для редактора карточки задачи
 export default class TaskEdit {
-    // Конструктор класса
-  constructor (task) {
+  // Конструктор класса
+  constructor(task) {
     this._task = task;
     this._element = null;
   }
 
-  //Возвращает шаблон задачи
+  // Возвращает шаблон задачи
   getTemplate() {
     return createTaskEditTemplate(this._task);
   }
 
-  //Возвращает элемент DOM
+  // Возвращает элемент DOM
   getElement() {
     if (!this._element) {
       this._element = createElement(this.getTemplate());
@@ -155,7 +155,7 @@ export default class TaskEdit {
     return this._element;
   }
 
-  //Очищает элемент DOM
+  // Очищает элемент DOM
   removeElement() {
     this._element = null;
   }

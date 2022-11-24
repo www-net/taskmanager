@@ -1,9 +1,9 @@
-import { MONTH_NAMES } from '../const.js';
-import { formatTime, createElement } from '../utils.js';
+import {MONTH_NAMES} from '../const.js';
+import {formatTime, createElement} from '../utils.js';
 
 // Создание шаблона карточки задачи
 const createTaskTemplate = (task) => {
-  const { description, dueDate, color, repeatingDays, isArchive, isFavorite } = task;
+  const {description, dueDate, color, repeatingDays, isArchive, isFavorite} = task;
 
   const isExpired = dueDate instanceof Date && dueDate < Date.now();
   const isDateShowing = !!dueDate;
@@ -63,7 +63,7 @@ const createTaskTemplate = (task) => {
   );
 };
 
-//Класс карточки задачи
+// Класс карточки задачи
 export default class Task {
   constructor(task) {
     this._task = task;
