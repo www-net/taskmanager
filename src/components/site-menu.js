@@ -1,4 +1,4 @@
-import { createElement } from "../utils";
+import {createElement} from "../utils";
 
 // Создание шаблона меню сайта
 const createSiteMenuTemplate = () => {
@@ -32,27 +32,27 @@ const createSiteMenuTemplate = () => {
   );
 };
 
-//Класс для меню сайта
+// Класс для меню сайта
 export default class SiteMenu {
-  //Конструктор класса
+  // Конструктор класса
   constructor() {
     this._element = null;
   }
 
-  //Возвращает шаблон меню сайта
+  // Возвращает шаблон меню сайта
   getTemplate() {
     return createSiteMenuTemplate();
   }
 
-  //Возврапщает DOM элемент
+  // Возврапщает DOM элемент
   getElement() {
-    if(!this._element) {
+    if (!this._element) {
       this._element = createElement(this.getTemplate());
     }
     return this._element;
   }
 
-  //Очищяет DOM элемент
+  // Очищяет DOM элемент
   removeElement() {
     this._element = null;
   }

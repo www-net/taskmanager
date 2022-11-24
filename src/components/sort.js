@@ -1,4 +1,4 @@
-import { createElement } from "../utils";
+import {createElement} from "../utils";
 
 // Cоздание шаблона элемента сортировки
 const createSortingTemplate = () => {
@@ -11,7 +11,7 @@ const createSortingTemplate = () => {
   );
 };
 
-//Класс для элементов сортировки
+// Класс для элементов сортировки
 export default class Sort {
   constructor() {
     this._element = null;
@@ -22,10 +22,10 @@ export default class Sort {
   }
 
   getElement() {
-    if(!this._element) {
-      this._element =  createElement(this.getTemplate());
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
     }
-    return this._element
+    return this._element;
   }
 
   removeElement() {

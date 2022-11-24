@@ -1,4 +1,4 @@
-import { createElement } from "../utils";
+import {createElement} from "../utils";
 
 // Создание шаблона доски задач
 const createBoardTemplate = () => {
@@ -7,19 +7,19 @@ const createBoardTemplate = () => {
   );
 };
 
-//Класс для доски задач
+// Класс для доски задач
 export default class Board {
   // Конструктор класса
   constructor() {
     this._element = null;
   }
 
- //Возвращаяет шаблон доски задач
+  // Возвращаяет шаблон доски задач
   getTemplate() {
     return createBoardTemplate();
   }
 
- //Возвращаяет элемент DOM
+  // Возвращаяет элемент DOM
   getElement() {
     if (!this._element) {
       this._element = createElement(this.getTemplate());
@@ -27,7 +27,7 @@ export default class Board {
     return this._element;
   }
 
-   //Очищает элемент DOM
+  // Очищает элемент DOM
   removeElement() {
     this._element = null;
   }

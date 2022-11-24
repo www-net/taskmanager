@@ -1,4 +1,4 @@
-import { createElement } from "../utils";
+import {createElement} from "../utils";
 
 // Создание разметки одного фильтра
 const createFilterMarkup = (filter, isChecked) => {
@@ -15,10 +15,10 @@ const createFilterMarkup = (filter, isChecked) => {
     <label for="filter__${name}" class="filter__label">
         ${name} <span class="filter__${name}-count">${count}</span></label
     >`
-  )
+  );
 };
 
-//Создание шаблон для фильтров
+// Создание шаблон для фильтров
 const createFiltersTemplate = (filters) => {
   const filtersMarkup = filters.map((it, i) => createFilterMarkup(it, i === 0)).join(`\n`);
   return (
@@ -29,7 +29,7 @@ const createFiltersTemplate = (filters) => {
 };
 
 
-//Класс для фильтров
+// Класс для фильтров
 export default class Filter {
   // Конструктор класса
   constructor(filters) {
@@ -37,20 +37,20 @@ export default class Filter {
     this._element = null;
   }
 
- //Возвращаяет шаблон задачи
+  // Возвращаяет шаблон задачи
   getTemplate() {
-    return createFiltersTemplate(this._filters)
+    return createFiltersTemplate(this._filters);
   }
 
- //Возвращаяет элемент DOM
+  // Возвращаяет элемент DOM
   getElement() {
-    if(!this._element) {
+    if (!this._element) {
       this._element = createElement(this.getTemplate());
     }
     return this._element;
   }
- //Очищает элемент DOM
+  // Очищает элемент DOM
   removeElement() {
     this._element = null;
   }
-};
+}
