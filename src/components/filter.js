@@ -29,7 +29,7 @@ const createFiltersTemplate = (filters) => {
 };
 
 
-//Класс для филььтров
+//Класс для фильтров
 export default class Filter {
   // Конструктор класса
   constructor(filters) {

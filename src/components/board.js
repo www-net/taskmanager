@@ -7,6 +7,7 @@ const createBoardTemplate = () => {
   );
 };
 
+//Класс для доски задач
 export default class Board {
   // Конструктор класса
   constructor() {
