@@ -9,7 +9,6 @@ const createLoadMoreButtonTemplate = () => {
 
 // Класс кнопки Load more
 export default class LoadMoreButton {
-  // Конструктор класса
   constructor() {
     this._element = null;
   }

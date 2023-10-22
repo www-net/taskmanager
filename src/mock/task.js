@@ -42,6 +42,7 @@ const generateRepeatingDays = () => {
   });
 };
 
+// Генерирует объект с данными для задачи
 export const generateTask = () => {
   const dueDate = Math.random() > 0.5 ? null : getRandomDate();
 
@@ -56,6 +57,7 @@ export const generateTask = () => {
   };
 };
 
+// Возвращает массив объектов с данными для задач
 export const generateTasks = (count) => {
   return new Array(count)
     .fill(``)
