@@ -7,12 +7,12 @@ import TasksComponent from './components/tasks';
 import NoTasksComponent from './components/no-tasks';
 import SiteMenuComponent from './components/site-menu';
 import SortComponent from './components/sort';
-import {generateTasks} from './mock/task';
-import {generateFilters} from './mock/filter';
-import {render} from './utils';
+import { generateTasks } from './mock/task';
+import { generateFilters } from './mock/filter';
+import { render, RenderPosition } from './utils';
 
 
-const TASK_COUNT = 0;
+const TASK_COUNT = 4;
 const SHOWING_TASKS_COUNT_ON_START = 8;
 const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
 

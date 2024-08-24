@@ -7,7 +7,7 @@ const createFilterMarkup = (filter, isChecked) => {
   return (
     `<input
         type="radio"
-        id="filter__"
+        id="filter__${name}"
         class="filter__input visually-hidden"
         name="filter"
         ${isChecked ? `checked` : ``}
@@ -19,7 +19,7 @@ const createFilterMarkup = (filter, isChecked) => {
 };
 
 // Создание шаблон для фильтров
-const createFiltersTemplate = (filters) => {
+const createFilterTemplate = (filters) => {
   const filtersMarkup = filters.map((it, i) => createFilterMarkup(it, i === 0)).join(`\n`);
   return (
     `<section class="main__filter filter container">
@@ -31,7 +31,6 @@ const createFiltersTemplate = (filters) => {
 
 // Класс для фильтров
 export default class Filter {
-  // Конструктор класса
   constructor(filters) {
     this._filters = filters;
     this._element = null;
@@ -39,7 +38,7 @@ export default class Filter {
 
   // Возвращаяет шаблон задачи
   getTemplate() {
-    return createFiltersTemplate(this._filters);
+    return createFilterTemplate(this._filters);
   }
 
   // Возвращаяет элемент DOM

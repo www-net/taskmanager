@@ -11,9 +11,9 @@
     "not < 0.25%"
   ],
   "scripts": {
-    "build": "webpack",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && webpack",
     "eslint": "eslint src/**/*.js",
-    "start": "webpack-dev-server --open",
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --open",
     "test": "npm run eslint"
   },
   "devDependencies": {
