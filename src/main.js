@@ -9,7 +9,7 @@ import SiteMenuComponent from './components/site-menu';
 import SortComponent from './components/sort';
 import {generateTasks} from './mock/task';
 import {generateFilters} from './mock/filter';
-import {remove, render, RenderPosition, replace} from './utils/render';
+import {remove, render, replace} from './utils/render';
 
 
 const TASK_COUNT = 18;
@@ -56,7 +56,7 @@ const renderBoard = (boardComponent, tasks) => {
   const isAllTasksArchived = tasks.every((task) => task.isArchive);
 
   if (isAllTasksArchived) {
-    render(boardComponent.getElement(), new NoTasksComponent().getElement());
+    render(boardComponent.getElement(), new NoTasksComponent());
     return;
   }
 
@@ -82,8 +82,7 @@ const renderBoard = (boardComponent, tasks) => {
       .forEach((task) => renderTask(taskListElement, task));
 
     if (showingTasksCount >= tasks.length) {
-      remove(loadMoreButtonComponent.getElement());
-      loadMoreButtonComponent.removeElement();
+      remove(loadMoreButtonComponent);
     }
   });
 };
