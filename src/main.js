@@ -49,7 +49,7 @@ const renderTask = (taskListElement, task) => {
     document.removeEventListener(`keydown`, onEscKeyDown);
   });
 
-  render(taskListElement, taskComponent.getElement());
+  render(taskListElement, taskComponent);
 };
 
 const renderBoard = (boardComponent, tasks) => {
@@ -60,8 +60,8 @@ const renderBoard = (boardComponent, tasks) => {
     return;
   }
 
-  render(boardComponent.getElement(), new SortComponent().getElement());
-  render(boardComponent.getElement(), new TasksComponent().getElement());
+  render(boardComponent.getElement(), new SortComponent());
+  render(boardComponent.getElement(), new TasksComponent());
 
   const taskListElement = boardComponent.getElement().querySelector(`.board__tasks`);
 
@@ -72,7 +72,7 @@ const renderBoard = (boardComponent, tasks) => {
     });
 
   const loadMoreButtonComponent = new LoadMoreButtonComponent();
-  render(boardComponent.getElement(), loadMoreButtonComponent.getElement());
+  render(boardComponent.getElement(), loadMoreButtonComponent);
 
   loadMoreButtonComponent.getElement().addEventListener(`click`, () => {
     const prevTasksCount = showingTasksCount;
@@ -94,9 +94,9 @@ const siteHeaderElement = siteMainElement.querySelector(`.main__control`);
 const filters = generateFilters();
 const tasks = generateTasks(TASK_COUNT);
 
-render(siteHeaderElement, new SiteMenuComponent().getElement());
-render(siteMainElement, new FilterComponent(filters).getElement());
+render(siteHeaderElement, new SiteMenuComponent());
+render(siteMainElement, new FilterComponent(filters));
 
 const boardComponent = new BoardComponent();
-render(siteMainElement, boardComponent.getElement());
+render(siteMainElement, boardComponent);
 renderBoard(boardComponent, tasks);
