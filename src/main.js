@@ -7,12 +7,12 @@ import TasksComponent from './components/tasks';
 import NoTasksComponent from './components/no-tasks';
 import SiteMenuComponent from './components/site-menu';
 import SortComponent from './components/sort';
-import { generateTasks } from './mock/task';
-import { generateFilters } from './mock/filter';
-import { render, RenderPosition } from './utils';
+import {generateTasks} from './mock/task';
+import {generateFilters} from './mock/filter';
+import {render, RenderPosition} from './utils';
 
 
-const TASK_COUNT = 4;
+const TASK_COUNT = 18;
 const SHOWING_TASKS_COUNT_ON_START = 8;
 const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
 
@@ -21,7 +21,7 @@ const renderTask = (taskListElement, task) => {
     taskListElement.replaceChild(taskEditComponent.getElement(), taskComponent.getElement());
   };
 
-  const replaceEditToTask = () => {
+  const onEditFormSubmit = () => {
     taskListElement.replaceChild(taskComponent.getElement(), taskEditComponent.getElement());
   };
 
@@ -29,7 +29,7 @@ const renderTask = (taskListElement, task) => {
     const isEscKey = evt.key === `Escape` || evt.key === `Esc`;
 
     if (isEscKey) {
-      replaceEditToTask();
+      onEditFormSubmit();
       document.removeEventListener(`keydown`, onEscKeyDown);
     }
   };
@@ -45,7 +45,7 @@ const renderTask = (taskListElement, task) => {
   const editForm = taskEditComponent.getElement().querySelector(`form`);
   editForm.addEventListener(`submit`, (evt) => {
     evt.preventDefault();
-    replaceEditToTask();
+    onEditFormSubmit();
     document.removeEventListener(`keydown`, onEscKeyDown);
   });
 

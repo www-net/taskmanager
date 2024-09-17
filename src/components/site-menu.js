@@ -1,4 +1,4 @@
-import {createElement} from "../utils";
+import AbstractComponent from "./abstract-component";
 
 // Создание шаблона меню сайта
 const createSiteMenuTemplate = () => {
@@ -33,27 +33,9 @@ const createSiteMenuTemplate = () => {
 };
 
 // Класс для меню сайта
-export default class SiteMenu {
-  // Конструктор класса
-  constructor() {
-    this._element = null;
-  }
-
+export default class SiteMenu extends AbstractComponent {
   // Возвращает шаблон меню сайта
   getTemplate() {
     return createSiteMenuTemplate();
-  }
-
-  // Возврапщает DOM элемент
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-    return this._element;
-  }
-
-  // Очищяет DOM элемент
-  removeElement() {
-    this._element = null;
   }
 }

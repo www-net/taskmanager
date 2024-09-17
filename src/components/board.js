@@ -1,4 +1,4 @@
-import {createElement} from "../utils";
+import AbstractComponent from "./abstract-component";
 
 // Создание шаблона доски задач
 const createBoardTemplate = () => {
@@ -8,26 +8,11 @@ const createBoardTemplate = () => {
 };
 
 // Класс для доски задач
-export default class Board {
-  constructor() {
-    this._element = null;
-  }
+export default class Board extends AbstractComponent {
 
   // Возвращаяет шаблон доски задач
   getTemplate() {
     return createBoardTemplate();
   }
 
-  // Возвращаяет элемент DOM
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-    return this._element;
-  }
-
-  // Очищает элемент DOM
-  removeElement() {
-    this._element = null;
-  }
 }

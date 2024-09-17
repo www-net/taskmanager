@@ -1,5 +1,6 @@
 import {COLORS, DAYS, MONTH_NAMES} from '../const.js';
-import {formatTime, createElement} from '../utils.js';
+import {formatTime} from '../utils.js';
+import AbstractComponent from './abstract-component.js';
 
 // Создает разметку для списка цветов
 const createColorsMarkup = (colors, currentColor) => {
@@ -135,28 +136,14 @@ const createTaskEditTemplate = (task) => {
 };
 
 // Класс для редактора карточки задачи
-export default class TaskEdit {
-  // Конструктор класса
+export default class TaskEdit extends AbstractComponent {
   constructor(task) {
+    super();
     this._task = task;
-    this._element = null;
   }
 
   // Возвращает шаблон задачи
   getTemplate() {
     return createTaskEditTemplate(this._task);
-  }
-
-  // Возвращает элемент DOM
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-    return this._element;
-  }
-
-  // Очищает элемент DOM
-  removeElement() {
-    this._element = null;
   }
 }
