@@ -1,4 +1,4 @@
-import {createElement} from "../utils";
+import AbstractComponent from "./abstract-component";
 
 // Создание разметки одного фильтра
 const createFilterMarkup = (filter, isChecked) => {
@@ -30,26 +30,14 @@ const createFilterTemplate = (filters) => {
 
 
 // Класс для фильтров
-export default class Filter {
+export default class Filter extends AbstractComponent {
   constructor(filters) {
+    super();
     this._filters = filters;
-    this._element = null;
   }
 
   // Возвращаяет шаблон задачи
   getTemplate() {
     return createFilterTemplate(this._filters);
-  }
-
-  // Возвращаяет элемент DOM
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-    return this._element;
-  }
-  // Очищает элемент DOM
-  removeElement() {
-    this._element = null;
   }
 }
