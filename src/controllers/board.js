@@ -45,6 +45,12 @@ const renderTask = (taskListElement, task) => {
   render(taskListElement, taskComponent);
 };
 
+const renderTasks = (taskListElement, tasks) => {
+  tasks.forEach((task) => {
+    renderTask(taskListElement, task);
+  });
+};
+
 const getSortedTasks = (tasks, sortType, from, to) => {
   let sortedTasks = [];
   const showingTasks = tasks.slice();
@@ -110,10 +116,8 @@ export default class BoardController {
     const taskListElement = container.querySelector(`.board__tasks`);
 
     let showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
-    tasks.slice(0, showingTasksCount)
-      .forEach((task) => {
-        renderTask(taskListElement, task);
-      });
+
+    renderTasks(taskListElement, tasks.slice(0, showingTasksCount));
 
     renderLoadMoreButton();
 
@@ -125,10 +129,7 @@ export default class BoardController {
 
       taskListElement.innerHTML = ``;
 
-      sortedTasks.slice(0, showingTasksCount)
-        .forEach((task) => {
-          renderTask(taskListElement, task);
-        });
+      renderTasks(taskListElement, sortedTasks);
 
       renderLoadMoreButton();
     });
