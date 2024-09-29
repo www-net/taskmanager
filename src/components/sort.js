@@ -30,7 +30,7 @@ export default class Sort extends AbstractComponent {
   }
 
   getSortType() {
-
+    return this._currentSortType;
   }
 
   setSortTypeChangeHandler(handler) {
