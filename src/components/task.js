@@ -22,7 +22,7 @@ const createTaskTemplate = (task) => {
 
   const editButton = createButtonMarkup(`edit`);
   const archiveButton = createButtonMarkup(`archive`, !task.isArchive);
-  const favoriteButton = createButtonMarkup(`favorite`, !task.isFavorire);
+  const favoriteButton = createButtonMarkup(`favorite`, !task.isFavorite);
 
   const repeatClass = Object.values(repeatingDays).some(Boolean) ? `card--repeat` : ``;
   const deadlineClass = isExpired ? `card--deadline` : ``;
