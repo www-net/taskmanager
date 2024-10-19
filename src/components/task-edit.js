@@ -1,13 +1,13 @@
 import {COLORS, DAYS, MONTH_NAMES} from '../const.js';
 import {formatTime} from '../utils/common.js';
-import AbstractComponent from './abstract-component.js';
+import AbstractSmartComponent from './abstract-smart-component.js';
 
 // Создает разметку для списка цветов
 const createColorsMarkup = (colors, currentColor) => {
   return colors
-        .map((color, index) => {
-          return (
-            `<input
+    .map((color, index) => {
+      return (
+        `<input
         type="radio"
         id="color-${color}--${index}"
         class="card__color-input card__color-input--${color} visually-hidden"
@@ -19,18 +19,18 @@ const createColorsMarkup = (colors, currentColor) => {
         for="color-${color}--${index}"
         class="card__color card__color--${color}"
     >${color}</label>`
-          );
-        })
-        .join(`\n`);
+      );
+    })
+    .join(`\n`);
 };
 
 // Создает разметку для списка дней недели
 const createRepeatingDaysMarkup = (days, repeatingDays) => {
   return days
-        .map((day, index) => {
-          const isChecked = repeatingDays[day];
-          return (
-            `<input
+    .map((day, index) => {
+      const isChecked = repeatingDays[day];
+      return (
+        `<input
                     class="visually-hidden card__repeat-day-input"
                     type="checkbox"
                     id="repeat-${day}-${index}"
@@ -40,9 +40,9 @@ const createRepeatingDaysMarkup = (days, repeatingDays) => {
                 />
                 <label class="card__repeat-day" for="repeat-${day}-${index}"
                 >${day}</label>`
-          );
-        })
-        .join(`\n`);
+      );
+    })
+    .join(`\n`);
 };
 
 // Создание шаблона редактора карточки задачи
@@ -136,19 +136,59 @@ const createTaskEditTemplate = (task) => {
 };
 
 // Класс для редактора карточки задачи
-export default class TaskEdit extends AbstractComponent {
+export default class TaskEdit extends AbstractSmartComponent {
   constructor(task) {
     super();
     this._task = task;
+    this._submitHandler = null;
+
+    this._subscribeOnEvents();
   }
 
-  // Возвращает шаблон задачи
   getTemplate() {
     return createTaskEditTemplate(this._task);
   }
 
-  setSubmitHandler(handler) {
-    this.getElement().querySelector(`form`).addEventListener(`submit`, handler);
+  recoveryListeners() {
+    this.setSubmitHandler(this._submitHandler);
+    this._subscribeOnEvents();
   }
 
+  rerender() {
+    super.rerender();
+  }
+
+  setSubmitHandler(handler) {
+    this.getElement().querySelector(`form`).addEventListener(`submit`, handler);
+
+    this._submitHandler = handler;
+  }
+
+  _subscribeOnEvents() {
+    const element = this.getElement();
+
+    element.querySelector(`.card__date-deadline-toggle`)
+      .addEventListener(`click`, () => {
+        this._isDateShowing = !this._isDateShowing;
+
+        this.rerender();
+      });
+
+    element.querySelector(`.card__repeat-toggle`)
+      .addEventListener(`click`, () => {
+        this._isRepeatingTask = !this._isRepeatingTask;
+
+        this.rerender();
+      });
+
+    const repeatDays = element.querySelector(`.card__repeat-days`);
+
+    if (repeatDays) {
+      repeatDays.addEventListener(`change`, (evt) => {
+        this._activeRepeatingDays[evt.target.value] = evt.target.checked;
+
+        this.rerender();
+      });
+    }
+  }
 }
