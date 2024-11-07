@@ -1,12 +1,9 @@
-// Добаввление нуля в отображении времени
-const castTimeFormat = (value) => {
-  return value < 10 ? `0${value}` : String(value);
+import moment from "moment";
+
+export const formatTime = (date) => {
+  return moment(date).format(`hh:mm`);
 };
 
-// Задаем формат отображения времени
-export const formatTime = (date) => {
-  const hours = castTimeFormat(date.getHours());
-  const minutes = castTimeFormat(date.getMinutes());
-
-  return `${hours}:${minutes}`;
+export const formatDate = (date) => {
+  return moment(date).format(`DD MMMM`);
 };
