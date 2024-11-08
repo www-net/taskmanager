@@ -14,6 +14,11 @@ export default class Tasks {
     this._callHandlers(this._dataChangeHandlers);
   }
 
+  setFilter(filterType) {
+    this._activeFilterType = filterType;
+    this._callHandlers(this._filterChangeHandlers);
+  }
+
   updateTask(id, task) {
     const index = this._tasks.findIndex((it) => it.id === id);
 
