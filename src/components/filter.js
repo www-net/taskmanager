@@ -1,6 +1,7 @@
 import AbstractComponent from "./abstract-component";
 
 const FILTER_ID_PREFIX = `filter__`;
+
 const getFilterNameById = (id) => {
   return id.substring(FILTER_ID_PREFIX.length);
 };
@@ -24,7 +25,7 @@ const createFilterMarkup = (filter, isChecked) => {
 };
 
 const createFilterTemplate = (filters) => {
-  const filtersMarkup = filters.map((it, i) => createFilterMarkup(it, i === 0)).join(`\n`);
+  const filtersMarkup = filters.map((it) => createFilterMarkup(it, it.checked)).join(`\n`);
   return (
     `<section class="main__filter filter container">
       ${filtersMarkup}
