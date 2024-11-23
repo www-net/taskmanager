@@ -6,8 +6,8 @@ export default class Tasks {
     this._tasks = [];
     this._activeFilterType = FilterType.ALL;
 
-    this._dataChangeHandlers = [];
-    this._filterChangeHandlers = [];
+    this._dataChangeHandlers = []; // controllers/filter    run: render()
+    this._filterChangeHandlers = []; // controllers/board   run: _updateTasks(count_task)
   }
 
   getTasks() {
@@ -28,6 +28,18 @@ export default class Tasks {
     this._callHandlers(this._filterChangeHandlers);
   }
 
+  removeTask(id) {
+    const index = this._tasks.findIndex((it) => it.id === id);
+
+    if (index === -1) {
+      return false;
+    }
+
+    this._tasks = [].concat(this._tasks.slice(0, index), this._tasks.slice(index + 1));
+    this._callHandlers(this._dataChangeHandlers);
+    return true;
+  }
+
   updateTask(id, task) {
     const index = this._tasks.findIndex((it) => it.id === id);
 
@@ -39,6 +51,11 @@ export default class Tasks {
     this._callHandlers(this._dataChangeHandlers);
 
     return true;
+  }
+
+  addTask(task) {
+    this._tasks = [].concat(task, this._task);
+    this._callHandlers(this._dataChangeHandlers);
   }
 
   setFilterChangeHandler(handler) {
