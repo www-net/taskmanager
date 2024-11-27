@@ -1,13 +1,30 @@
 import TaskComponent from "../components/task";
 import TaskEditComponent from "../components/task-edit";
+import {COLOR} from "../const";
 import {remove, render, replace} from "../utils/render";
 
 export const Mode = {
+  ADDING: `adding`,
   DEFAULT: `default`,
   EDIT: `edit`,
 };
 
-export const EmptyTask = {};
+export const EmptyTask = {
+  description: ``,
+  dueDate: null,
+  repeatingDays: {
+    "mo": false,
+    "tu": false,
+    "we": false,
+    "th": false,
+    "fr": false,
+    "sa": false,
+    "su": false,
+  },
+  color: COLOR.BLACK,
+  isFavorite: false,
+  isArchive: false,
+};
 
 export default class TaskController {
   constructor(container, onDataChange, onViewChange) {
